@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Manisha Tai 🎂</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #40007c, #9710a4, #f761a2);
+    color: white;
+    text-align: center;
+}
+
+/* FULL-SCREEN BACKGROUND PHOTO: 20% INTENSITY */
+.background-photo {
+    position: fixed;
+    inset: -2;
+    width: 100%;
+    height: 100%;
+    z-index: index 6;
+    overflow: hidden;
+}
+
+.background-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position:center 26%;
+    opacity: 0.40;
+}
+
+/* Purple-pink overlay */
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        135deg,
+        rgba(134, 45, 217, 0.72),
+        rgba(175, 46, 187, 0.65),
+        rgba(247, 97, 162, 0.55)
+    );
+    pointer-events: none;
+}
+
+.container {
+    min-height: 100vh;
+    padding: 35px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 75px);
+    margin-bottom: 25px;
+    animation: glow 2s infinite alternate;
+}
+
+.name {
+    font-weight: 900;
+    color: #fff;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #ff69b4,
+        0 0 45px #ff1493;
+}
+
+.subtitle {
+    font-size: clamp(44px, 4vw, 42px);
+    margin-bottom: 25px;
+}
+
+/* Profile photo */
+.photo-box {
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    padding: 8px;
+    background: linear-gradient(45deg, #ffd700, #ff69b4, #fff);
+    box-shadow: 0 0 40px rgba(255,255,255,0.9);
+    animation: float 3s ease-in-out infinite;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center ;
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+
+.message {
+    max-width: 900px;
+    width: 100%;
+    margin: 25px auto;
+    padding: 22px;
+    border-radius: 20px;
+    background: rgba(40, 0, 50, 0.40);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    font-size: clamp(18px, 3vw, 28px);
+    line-height: 1.7;
+}
+
+button {
+    border: none;
+    padding: 15px 30px;
+    margin: 8px;
+    border-radius: 50px;
+    background: #fff;
+    color: #d4145a;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255,255,255,0.7);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 35px white;
+}
+
+/* Surprise section */
+#surprise {
+    display: none;
+    margin-top: 35px;
+    padding: 35px;
+    width: 100%;
+    max-width: 850px;
+    border-radius: 20px;
+    background: rgba(40, 0, 30, 0.65);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 0 30px rgba(255,105,180,0.4);
+    animation: appear 1s ease;
+    font-size: 25px;
+    line-height: 1.7;
+}
+
+#surprise p {
+    font-size: clamp(19px, 3vw, 28px);
+    line-height: 1.7;
+}
+
+#surprise h2 {
+    font-size: clamp(27px, 5vw, 42px);
+    color: #ffe66d;
+    margin-bottom: 26px;
+    text-shadow: 0 0 15px #ff69b4;
+}
+
+#surprise h3 {
+    margin-top: 25px;
+    font-size: 30px;
+    color: #ffe66d;
+}
+
+/* Floating balloons */
+.balloon {
+    position: fixed;
+    bottom: -100px;
+    font-size: 55px;
+    animation: rise linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.b1 { left: 5%; animation-duration: 8s; }
+.b2 { left: 20%; animation-duration: 11s; }
+.b3 { left: 75%; animation-duration: 9s; }
+.b4 { left: 90%; animation-duration: 12s; }
+.b5 { left: 45%; animation-duration: 10s; }
+.b6 { left: 60%; animation-duration: 13s; }
+.b7 { left: 30%; animation-duration: 14s; }
+.b8 { left: 80%; animation-duration: 15s; }
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 2;
+    animation: sparkle 2s infinite;
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 50px #ff1493;
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-130vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px 14px;
+    }
+
+    .photo-box {
+        width: 220px;
+        height: 220px;
+    }
+
+    .message {
+        padding: 18px;
+        font-size: 17px;
+    }
+
+    #surprise {
+        padding: 22px 16px;
+    }
+
+    #surprise h3 {
+        font-size: 24px;
+    }
+
+    button {
+        max-width: 100%;
+        padding: 13px 22px;
+        font-size: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .photo-box, h1, .balloon, .sparkle {
+        animation: none;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Full-page background photo -->
+<div class="background-photo">
+    <img src="manisha2.jpg" alt="">
+</div>
+
+<!-- Color overlay -->
+<div class="background-overlay"></div>
+
+<!-- Birthday music -->
+<audio id="birthdayMusic" loop>
+    <source src="happy_birthday.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Balloons -->
+<div class="balloon b1">🎈</div>
+<div class="balloon b2">🎈</div>
+<div class="balloon b3">🎈</div>
+<div class="balloon b4">🎈</div>
+<div class="balloon b5">🎈</div>
+<div class="balloon b6">🎈</div>
+<div class="balloon b7">🎈</div>
+<div class="balloon b8">🎈</div>
+
+<div class="container">
+
+    <div class="subtitle">
+        🎉 Today is a Very Special Day 🎉
+    </div>
+
+    <h1>
+        Happy Birthday
+        <span class="name">Manisha Tai</span> 🎂
+    </h1>
+
+    <!-- Main photo -->
+    <div class="photo-box">
+        <img src="manisha 3.jpg" alt="Manisha Tai">
+    </div>
+
+    <div class="message">
+        💖 Dear <strong>Manisha Tai</strong>, 💖
+        <br><br>
+
+        Wishing you a very
+        <strong>Happy Birthday! 🎂🎉</strong>
+
+        <br><br>
+
+        May your life always be filled with
+        happiness, good health and countless
+        beautiful memories. ✨
+
+        <br><br>
+
+        You are not just my sister,
+        you are someone very special in my life. ❤️
+
+        <br><br>
+        🌸 Keep smiling, keep shining and keep being amazing! 🌸
+    </div>
+
+    <button onclick="playMusic()">
+        🎵 Play Birthday Music
+    </button>
+
+    <button onclick="stopMusic()">
+        ⏹️ Stop Birthday Music
+    </button>
+
+    <br>
+
+    <button onclick="showSurprise()">
+        🎁 Open Your Surprise
+    </button>
+
+    <div id="surprise">
+
+        <h2>🎊 SURPRISE! 🎊</h2>
+
+        <p>
+            ✨ Manisha Tai, this little surprise
+            is made especially for you on your special day! ✨
+        </p>
+
+        <br>
+
+        <p>
+            🌟 May every new day bring you a reason to smile.
+            <br>
+            🌈 May all your dreams come true.
+            <br>
+            💖 And may happiness always follow you!
+        </p>
+
+        <br>
+
+        <h2>🎂 HAPPY BIRTHDAY TAI! 🎂</h2>
+
+        <p style="font-size:30px;">
+            🥳🎈🎁💐❤️✨
+        </p>
+
+        <h3> From SUGAT ❤️</h3>
+
+    </div>
+
+</div>
+
+<script>
+function playMusic() {
+    const music = document.getElementById("birthdayMusic");
+
+    music.play()
+        .then(() => {
+            // Music started successfully.
+        })
+        .catch(() => {
+            alert("Please check that happy_birthday.mp3 is in the correct folder.");
+        });
+}
+
+function stopMusic() {
+    const music = document.getElementById("birthdayMusic");
+    music.pause();
+    music.currentTime = 0;
+}
+
+function showSurprise() {
+    const surprise = document.getElementById("surprise");
+
+    surprise.style.display = "block";
+
+    createConfetti();
+
+    surprise.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    const music = document.getElementById("birthdayMusic");
+
+    if (music.paused) {
+        music.play().catch(() => {});
+    }
+}
+
+function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+
+        confetti.innerHTML = [
+            "🎉", "✨", "💖", "🎊", "⭐", "🎈", "💐"
+        ][Math.floor(Math.random() * 7)];
+
+        confetti.style.position = "fixed";
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.top = "-30px";
+        confetti.style.fontSize = (15 + Math.random() * 25) + "px";
+        confetti.style.zIndex = "9999";
+        confetti.style.pointerEvents = "none";
+
+        document.body.appendChild(confetti);
+
+        const duration = 2000 + Math.random() * 3000;
+
+        confetti.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        `translateY(110vh) rotate(${Math.random() * 720}deg)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: duration,
+                easing: "linear"
+            }
+        );
+
+        setTimeout(() => confetti.remove(), duration);
+    }
+}
+
+/* Gentle sparkle effect */
+setInterval(() => {
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✨";
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = Math.random() * 100 + "vh";
+    sparkle.style.fontSize = (10 + Math.random() * 20) + "px";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 2000);
+}, 700);
+</script>
+
+</body>
+</html>
